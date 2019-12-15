@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">UAS</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Title slide 1</string>
+    <string name="slide_1_desc">Description slide 1</string>
+
+    <string name="slide_2_title">Title slide 2</string>
+    <string name="slide_2_desc">Description slide 2</string>
+
+    <string name="slide_3_title">Title slide 3</string>
+    <string name="slide_3_desc">Description slide 3</string>
+
+    <string name="slide_4_title">Title slide 4</string>
+    <string name="slide_4_desc">Description slide 4</string>
 </resources>
