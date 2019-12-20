@@ -15,4 +15,6 @@
 
     <string name="slide_4_title">Title slide 4</string>
     <string name="slide_4_desc">Description slide 4</string>
+    <string name="label_confirm_password">Confirm Password</string>
+    <string name="label_signup">Confirm Password</string>
 </resources>
