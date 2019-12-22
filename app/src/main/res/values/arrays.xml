@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="islands">
+        <item>Jawa</item>
+        <item>Sumatera</item>
+        <item>Kalimantan</item>
+        <item>Sulawesi</item>
+        <item>Papua</item>
+    </string-array>
+</resources>
