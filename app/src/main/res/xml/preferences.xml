@@ -79,7 +79,7 @@
     <PreferenceCategory
         android:key="advanced"
         android:title="@string/advanced_attributes"
-        app:initialExpandedChildrenCount="1">
+        app:initialExpandedChildrenCount="2">
 
         <Preference
             android:key="expandable"
@@ -87,14 +87,19 @@
             android:title="@string/title_expandable_preference" />
 
         <Preference
+            android:id="@+id/logout"
             android:summary="@string/summary_intent_preference"
             android:title="@string/title_intent_preference">
 
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="http://www.android.com" />
+
+            <!--            <intent-->
+            <!--                android:action="android.intent.action.VIEW"-->
+            <!--                android:data="http://www.android.com"-->
+            <!--                android:identifier=""/>-->
 
         </Preference>
+
+
 
         <SwitchPreferenceCompat
             android:key="parent"
