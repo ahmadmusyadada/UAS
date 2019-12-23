@@ -188,7 +188,7 @@ public class AddFragment extends Fragment {
                     final String sjudul = judul.getText().toString().trim();
                     final String sdeskripsi = deskripsi.getText().toString();
                     progressDialog.dismiss();
-                    Toast.makeText(getContext().getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Successfully!!", Toast.LENGTH_LONG).show();
                     Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                     while (!urlTask.isSuccessful());
                     Uri downloadUrl = urlTask.getResult();
