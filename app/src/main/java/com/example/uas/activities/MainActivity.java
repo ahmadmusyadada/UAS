@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        loadFragment(new AddFragment());
+        loadFragment(new ListFragment());
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         // beri listener pada saat item/menu bottomnavigation terpilih
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
