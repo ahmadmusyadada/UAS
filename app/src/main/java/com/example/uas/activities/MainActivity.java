@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        loadFragment(new FoodFragment());
+        loadFragment(new AddFragment());
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         // beri listener pada saat item/menu bottomnavigation terpilih
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -66,14 +66,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
         switch (menuItem.getItemId()) {
-            case R.id.action_food:
-                fragment = new FoodFragment();
+            case R.id.action_list:
+                fragment = new ListFragment();
                 break;
-            case R.id.action_movie:
-                fragment = new MovieFragment();
+            case R.id.action_edit:
+                fragment = new UpdateFragment();
                 break;
-            case R.id.action_discount:
-                fragment = new DiscountFragment();
+            case R.id.action_add:
+                fragment = new AddFragment();
+                break;
+            case R.id.action_delete:
+                fragment = new DeleteFragment();
                 break;
             case R.id.action_about:
                 fragment = new AboutFragment();
