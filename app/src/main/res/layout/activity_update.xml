@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".fragments.AddFragment">
+    android:layout_height="match_parent"
+    tools:context=".activities.UpdateActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint"
@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Add"
+            android:text="@string/common_google_play_services_update_button"
             android:textSize="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Add"
+            android:text="@string/common_google_play_services_update_button"
             app:layout_constraintEnd_toEndOf="@+id/et_description_update"
             app:layout_constraintStart_toStartOf="@+id/et_description_update"
             app:layout_constraintTop_toBottomOf="@+id/et_description_update" />

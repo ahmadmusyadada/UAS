@@ -2,25 +2,21 @@ package com.example.uas.fragments;
 
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.uas.Adapters.ListFragmentAdapter;
+import com.example.uas.adapters.ListFragmentAdapter;
 import com.example.uas.R;
 import com.example.uas.models.Data;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +24,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +49,7 @@ public class ListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        RelativeLayout placeholder = view.findViewById(R.id.relative);
+        RelativeLayout placeholder = view.findViewById(R.id.rl_list);
         LayoutInflater inflate = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final RelativeLayout holder = (RelativeLayout) inflate.inflate(R.layout.recycler_list, null);
         placeholder.addView(holder);

@@ -23,6 +23,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.uas.R;
 import com.example.uas.models.Data;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,7 +36,6 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -72,10 +72,10 @@ public class AddFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add, container, false);
-        addImage = view.findViewById(R.id.imageButton);
-        add = view.findViewById(R.id.buttonAdd);
-        judul = view.findViewById(R.id.et_judul);
-        deskripsi = view.findViewById(R.id.et_description);
+        addImage = view.findViewById(R.id.image_update);
+        add = view.findViewById(R.id.button_update_update);
+        judul = view.findViewById(R.id.et_title_update);
+        deskripsi = view.findViewById(R.id.et_description_update);
         progressDialog = new ProgressDialog(getContext());
 
 
@@ -151,7 +151,8 @@ public class AddFragment extends Fragment {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == getActivity().RESULT_OK && data != null && data.getData() != null) {
             if (data != null) {
                 FilePathUri = data.getData();
-                Picasso.with(getContext()).load(FilePathUri).into(addImage);
+                Glide.with(getActivity()).load(FilePathUri).into(addImage);
+//                Picasso.with(getActivity()).load(FilePathUri).into(addImage);
 
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), FilePathUri);
