@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1047392256995",
+    "firebase_url": "https://uas-pemrograman-mobile.firebaseio.com",
+    "project_id": "uas-pemrograman-mobile",
+    "storage_bucket": "uas-pemrograman-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047392256995:android:e52ff05c8af8ed7e3956d6",
+        "android_client_info": {
+          "package_name": "com.example.uas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047392256995-u90ba21lm89rd6lclc85i5lmhorubvbh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.uas",
+            "certificate_hash": "90a563a9a033aa8a7cfe8a36dac1ec1b268e0f77"
+          }
+        },
+        {
+          "client_id": "1047392256995-7utae7c2ofn5f25o7ga2rn465akhfjvb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD11B-TxJU6yOUz6GCktlhzJ2bH6lB_LsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047392256995-7utae7c2ofn5f25o7ga2rn465akhfjvb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
