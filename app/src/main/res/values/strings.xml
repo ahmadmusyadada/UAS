@@ -4,17 +4,18 @@
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
-    <string name="slide_1_title">Title slide 1</string>
-    <string name="slide_1_desc">Description slide 1</string>
+    <string name="slide_1_title">Add</string>
+    <string name="slide_1_desc">Anda bisa menambahkan tulisan dan gambar disini</string>
 
-    <string name="slide_2_title">Title slide 2</string>
-    <string name="slide_2_desc">Description slide 2</string>
+    <string name="slide_2_title">Update</string>
+    <string name="slide_2_desc">Anda bisa meng-update tulisan maupun gambar yang telah di upload</string>
 
-    <string name="slide_3_title">Title slide 3</string>
-    <string name="slide_3_desc">Description slide 3</string>
+    <string name="slide_3_title">Delete</string>
+    <string name="slide_3_desc">Dan juga bisa menghapus</string>
 
-    <string name="slide_4_title">Title slide 4</string>
-    <string name="slide_4_desc">Description slide 4</string>
+    <string name="slide_4_title">Read</string>
+    <string name="slide_4_desc">Melihat semua yang telah di upload</string>
+
     <string name="label_confirm_password">Confirm Password</string>
     <string name="label_signup">Confirm Password</string>
 

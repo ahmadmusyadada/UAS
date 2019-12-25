@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             // TODO: open settings here using openFragment()
-            loadFragment(new SettingsFragment());
+            openFragment(new SettingsFragment());
             return true;
         }
 
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 openFragment(new AboutFragment());
                 return true;
         }
-        return loadFragment(fragment);
+        return false;
     }
 
     private void openFragment(Fragment fragment) {

@@ -2,9 +2,11 @@ package com.example.uas.fragments;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,8 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
+import com.example.uas.Application;
 import com.example.uas.adapters.ListFragmentAdapter;
 import com.example.uas.R;
 import com.example.uas.models.Data;
@@ -36,6 +40,8 @@ public class ListFragment extends Fragment {
     private ProgressBar mProgressBar;
     private List<Data> listData;
     private ListFragmentAdapter mAdapter;
+    private SharedPreferences preferences;
+    public static final String LIST_KEY = "list";
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Data");
 
@@ -43,12 +49,20 @@ public class ListFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        preferences = Application.getPreferences();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
+        SharedPreferences prefs = getActivity().getSharedPreferences("list", Context.MODE_PRIVATE);
+        String color = prefs.getString("list", "White");
+
         RelativeLayout placeholder = view.findViewById(R.id.rl_list);
         LayoutInflater inflate = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final RelativeLayout holder = (RelativeLayout) inflate.inflate(R.layout.recycler_list, null);
@@ -87,4 +101,21 @@ public class ListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //        preferences = Application.getPreferences();
+
+//        String color = preferences.getString(LIST_KEY, null);
+        ScrollView sv = view.findViewById(R.id.scrollView2);
+//        if (color == "White"){
+//            sv.setBackgroundColor(Color.WHITE);
+//        } else if (color == "Yellow"){
+//            sv.setBackgroundColor(Color.YELLOW);
+//        } else if (color == "Green"){
+//            sv.setBackgroundColor(Color.GREEN);
+//        } else {
+//            sv.setBackgroundColor(Color.WHITE);
+//        }
+    }
 }
