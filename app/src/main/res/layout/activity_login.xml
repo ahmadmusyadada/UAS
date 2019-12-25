@@ -18,18 +18,28 @@
         android:maxLines="1"
         android:singleLine="true"
         android:imeOptions="actionNext"/>
+
     <EditText
         android:id="@+id/et_passwordSignin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:hint="Password"
-        android:inputType="textPassword"
-        android:maxLines="1"
-        android:singleLine="true"
         android:imeActionId="6"
         android:imeActionLabel="Sign In"
-        android:imeOptions="actionDone" />
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <CheckBox
+        android:id="@+id/cb_remember_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginBottom="20dp"
+        android:text="Remember Me" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

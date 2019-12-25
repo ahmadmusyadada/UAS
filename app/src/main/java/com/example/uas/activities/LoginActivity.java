@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText mViewUser, mViewPassword;
+    private CheckBox rememberMe;
     private FirebaseAuth mAuth;
 
     @Override
@@ -33,8 +35,9 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
         /* Menginisialisasi variable dengan Form User dan Form Password dari Layout LoginActivity */
-        mViewUser=findViewById(R.id.et_emailSignin);
-        mViewPassword =findViewById(R.id.et_passwordSignin);
+        mViewUser = findViewById(R.id.et_emailSignin);
+        mViewPassword = findViewById(R.id.et_passwordSignin);
+        rememberMe = findViewById(R.id.cb_remember_login);
         /* Menjalankan Method razia() Jika tombol SignIn di keyboard di sentuh */
         mViewPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -93,22 +96,24 @@ public class LoginActivity extends AppCompatActivity {
             mViewUser.setError("This field is required");
             fokus = mViewUser;
             cancel = true;
-        }else if(!cekUser(user)){
-            mViewUser.setError("This Username is not found");
-            fokus = mViewUser;
-            cancel = true;
         }
+//        else if(!cekUser(user)){
+//            mViewUser.setError("This Username is not found");
+//            fokus = mViewUser;
+//            cancel = true;
+//        }
 
         /* Sama syarat percabangannya dengan User seperti di atas. Bedanya ini untuk Form Password*/
         if (TextUtils.isEmpty(password)){
             mViewPassword.setError("This field is required");
             fokus = mViewPassword;
             cancel = true;
-        }else if (!cekPassword(password)){
-            mViewPassword.setError("This password is incorrect");
-            fokus = mViewPassword;
-            cancel = true;
         }
+//        else if (!cekPassword(password)){
+//            mViewPassword.setError("This password is incorrect");
+//            fokus = mViewPassword;
+//            cancel = true;
+//        }
 
         /* Jika cancel true, variable fokus mendapatkan fokus */
         if (cancel) fokus.requestFocus();
@@ -121,9 +126,10 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("success", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Preferences.setLoggedInUser(getBaseContext(), user.getEmail());
-                            Preferences.setLoggedInStatus(getBaseContext(),true);
-
+                            if (rememberMe.isChecked()){
+                                Preferences.setLoggedInUser(getBaseContext(), user.getEmail());
+                                Preferences.setLoggedInStatus(getBaseContext(),true);
+                            }
                             startActivity(new Intent(getBaseContext(),MainActivity.class));finish();
 //                            updateUI(user);
                         } else {
