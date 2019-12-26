@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.uas.Preferences;
 import com.example.uas.R;
 import com.example.uas.activities.UpdateActivity;
 import com.example.uas.models.Data;
@@ -71,6 +72,8 @@ public class UpdateFragmentAdapter extends RecyclerView.Adapter<UpdateFragmentAd
             deskripsi = itemView.findViewById(R.id.tv_description_update);
             gambar = itemView.findViewById(R.id.iv_gambar_update);
             update = itemView.findViewById(R.id.update_button);
+            judul.setTextSize((float) Preferences.getFontSize(itemView.getContext()));
+            deskripsi.setTextSize((float) Preferences.getFontSize(itemView.getContext()));
         }
     }
 }

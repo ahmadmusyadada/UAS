@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,12 +19,16 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.example.uas.Preferences;
 import com.example.uas.R;
 import com.example.uas.models.Data;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -51,6 +56,8 @@ public class AddFragment extends Fragment {
     EditText judul, deskripsi;
     Button add;
     ProgressDialog progressDialog;
+    TextView title;
+    ScrollView scrollView;
 
     StorageTask mUploadTask;
     StorageReference mStorageRef;
@@ -72,10 +79,28 @@ public class AddFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add, container, false);
-        addImage = view.findViewById(R.id.image_update);
-        add = view.findViewById(R.id.button_update_update);
-        judul = view.findViewById(R.id.et_title_update);
-        deskripsi = view.findViewById(R.id.et_description_update);
+        title = view.findViewById(R.id.tv_title_add);
+        title.setTextSize((float) Preferences.getFontSize(getContext()) + 12);
+        String color = Preferences.getBackgroundColor(getContext());
+        ConstraintLayout cl = view.findViewById(R.id.cl_add);
+        scrollView = view.findViewById(R.id.sv_add);
+        if (color.equalsIgnoreCase("White")){
+            cl.setBackgroundColor(Color.WHITE);
+            scrollView.setBackgroundColor(Color.WHITE);
+        } else if (color.equalsIgnoreCase("Yellow")){
+            cl.setBackgroundColor(Color.YELLOW);
+            scrollView.setBackgroundColor(Color.YELLOW);
+        } else if (color.equalsIgnoreCase("Green")){
+            cl.setBackgroundColor(Color.GREEN);
+            scrollView.setBackgroundColor(Color.GREEN);
+        } else if (color.equalsIgnoreCase("Blue")){
+            cl.setBackgroundColor(Color.BLUE);
+            scrollView.setBackgroundColor(Color.BLUE);
+        }
+        addImage = view.findViewById(R.id.image_add);
+        add = view.findViewById(R.id.button_add_add);
+        judul = view.findViewById(R.id.et_title_add);
+        deskripsi = view.findViewById(R.id.et_description_add);
         progressDialog = new ProgressDialog(getContext());
 
 
@@ -130,11 +155,6 @@ public class AddFragment extends Fragment {
         return "";
     }
 
-    private void takePhotoFromCamera() {
-        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, CAMERA);
-    }
-
     private void choosePhotoFromGallary() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -152,7 +172,6 @@ public class AddFragment extends Fragment {
             if (data != null) {
                 FilePathUri = data.getData();
                 Glide.with(getActivity()).load(FilePathUri).into(addImage);
-//                Picasso.with(getActivity()).load(FilePathUri).into(addImage);
 
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), FilePathUri);
@@ -196,7 +215,6 @@ public class AddFragment extends Fragment {
 
                     Data upload = new Data(sjudul, sdeskripsi, downloadUrl.toString());
                     mDatabaseRef.child(sjudul).setValue(upload);
-//                    getActivity().finish();
                 }
             })
                     .addOnFailureListener(new OnFailureListener() {
@@ -217,8 +235,4 @@ public class AddFragment extends Fragment {
             Toast.makeText(getContext(), "No file selected", Toast.LENGTH_SHORT).show();
         }
     }
-//    public void handlerOnClickBatal(View view) {
-//        Intent intent = new Intent(this, FiturAdmin.class);
-//        startActivity(intent);
-//    }
 }

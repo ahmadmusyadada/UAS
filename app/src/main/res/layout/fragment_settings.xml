@@ -40,6 +40,12 @@
             android:layout_height="wrap_content"
             android:text="Blue" />
 
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="White" />
+
     </RadioGroup>
 
     <TextView
@@ -47,7 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
-        android:text="Font Size:" />
+        android:text="Font Size:"
+        android:textColor="#000000" />
 
     <SeekBar
         android:id="@+id/sb_font_size"
@@ -61,6 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="0" />
+        android:text="0"
+        android:textColor="#000000" />
 
 </LinearLayout>

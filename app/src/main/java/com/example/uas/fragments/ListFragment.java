@@ -9,7 +9,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Constraints;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,20 +66,18 @@ public class ListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         title = view.findViewById(R.id.tv_title_list);
         title.setTextSize((float) Preferences.getFontSize(getContext()) + 12);
-//        SharedPreferences prefs = getActivity().getSharedPreferences("list", Context.MODE_PRIVATE);
-//        String color = prefs.getString("list", "White");
         String color = Preferences.getBackgroundColor(getContext());
         ConstraintLayout sv = view.findViewById(R.id.constraint);
-//        ScrollView sv = view.findViewById(R.id.scrollView2);
         if (color.equalsIgnoreCase("White")){
             sv.setBackgroundColor(Color.WHITE);
         } else if (color.equalsIgnoreCase("Yellow")){
             sv.setBackgroundColor(Color.YELLOW);
         } else if (color.equalsIgnoreCase("Green")){
             sv.setBackgroundColor(Color.GREEN);
-        } else {
-            sv.setBackgroundColor(Color.WHITE);
+        } else if (color.equalsIgnoreCase("Blue")){
+            sv.setBackgroundColor(Color.BLUE);
         }
+
         RelativeLayout placeholder = view.findViewById(R.id.rl_list);
         LayoutInflater inflate = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final RelativeLayout holder = (RelativeLayout) inflate.inflate(R.layout.recycler_list, null);
@@ -91,13 +87,6 @@ public class ListFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mProgressBar = view.findViewById(R.id.progress_circle);
-//        makanan2 = findViewById(R.id.makanan_spinner2);
-//        jumlah = findViewById(R.id.total_tr_off);
-//        amount = findViewById(R.id.quantity_menu);
-//        submit = findViewById(R.id.buttonPesan_tr_off);
-
-//        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("custom-message"));
-//        databaseOrder.setValue(null);
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -123,18 +112,5 @@ public class ListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //        preferences = Application.getPreferences();
-
-//        String color = preferences.getString(LIST_KEY, null);
-
-//        if (color == "White"){
-//            sv.setBackgroundColor(Color.WHITE);
-//        } else if (color == "Yellow"){
-//            sv.setBackgroundColor(Color.YELLOW);
-//        } else if (color == "Green"){
-//            sv.setBackgroundColor(Color.GREEN);
-//        } else {
-//            sv.setBackgroundColor(Color.WHITE);
-//        }
     }
 }

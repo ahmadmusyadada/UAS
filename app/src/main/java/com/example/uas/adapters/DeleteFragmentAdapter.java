@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.uas.Preferences;
 import com.example.uas.R;
 import com.example.uas.models.Data;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -127,6 +128,8 @@ public class DeleteFragmentAdapter extends RecyclerView.Adapter<DeleteFragmentAd
             description = itemView.findViewById(R.id.tv_description_delete);
             image = itemView.findViewById(R.id.iv_gambar_delete);
             delete = itemView.findViewById(R.id.delete_button);
+            title.setTextSize((float) Preferences.getFontSize(itemView.getContext()));
+            description.setTextSize((float) Preferences.getFontSize(itemView.getContext()));
         }
     }
 }

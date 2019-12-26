@@ -45,8 +45,6 @@ public class UpdateActivity extends AppCompatActivity {
     StorageReference mStorageRef;
     DatabaseReference mDatabaseRef;
 
-    private static final String IMAGE_DIRECTORY = "/tctt";
-    private int CAMERA = 2;
     final int PICK_IMAGE_REQUEST = 1;
     public Uri FilePathUri;
     UploadTask uploadTask;
@@ -109,7 +107,6 @@ public class UpdateActivity extends AppCompatActivity {
             if (data != null) {
                 FilePathUri = data.getData();
                 Glide.with(this).load(FilePathUri).into(image);
-//                Picasso.with(this).load(FilePathUri).into(updateImage);
 
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri);
@@ -155,7 +152,6 @@ public class UpdateActivity extends AppCompatActivity {
                             final String sjudul = title.getText().toString().trim();
                             final String sdeskripsi = description.getText().toString();
                             progressDialog.dismiss();
-//                            Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                             Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                             while (!urlTask.isSuccessful());
                             Uri downloadUrl = urlTask.getResult();
@@ -192,7 +188,6 @@ public class UpdateActivity extends AppCompatActivity {
                         }
                     });
         } else {
-//            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
             final String sjudul = title.getText().toString().trim();
             final String sdeskripsi = description.getText().toString();
             if (sjudul != titleSelected){
@@ -214,12 +209,7 @@ public class UpdateActivity extends AppCompatActivity {
         }
     }
 
-    public void handlerOnClickBatalUpdate(View view) {
-        Intent intent = new Intent(this, UpdateActivity.class);
-        startActivity(intent);
-    }
-
-    public void handlerOnClickSubmitUpdate(View view) {
-
+    public void handlerOnClickBatal(View view) {
+         onBackPressed();
     }
 }

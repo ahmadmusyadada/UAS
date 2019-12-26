@@ -2,22 +2,25 @@ package com.example.uas.fragments;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.uas.Preferences;
 import com.example.uas.R;
 import com.example.uas.adapters.DeleteFragmentAdapter;
-import com.example.uas.adapters.UpdateFragmentAdapter;
 import com.example.uas.models.Data;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +42,7 @@ public class DeleteFragment extends Fragment {
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Data");
 
+    TextView title;
     public DeleteFragment() {
         // Required empty public constructor
     }
@@ -49,6 +53,19 @@ public class DeleteFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_delete, container, false);
+        title = view.findViewById(R.id.tv_title_delete);
+        title.setTextSize((float) Preferences.getFontSize(getContext()) + 12);
+        String color = Preferences.getBackgroundColor(getContext());
+        ConstraintLayout cl = view.findViewById(R.id.cl_delete);
+        if (color.equalsIgnoreCase("White")){
+            cl.setBackgroundColor(Color.WHITE);
+        } else if (color.equalsIgnoreCase("Yellow")){
+            cl.setBackgroundColor(Color.YELLOW);
+        } else if (color.equalsIgnoreCase("Green")){
+            cl.setBackgroundColor(Color.GREEN);
+        } else if (color.equalsIgnoreCase("Blue")){
+            cl.setBackgroundColor(Color.BLUE);
+        }
         RelativeLayout placeholder = view.findViewById(R.id.rl_delete);
         LayoutInflater inflate = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final RelativeLayout holder = (RelativeLayout) inflate.inflate(R.layout.recycler_list, null);
