@@ -10,6 +10,7 @@ public class Preferences {
     static final String KEY_USER_TEREGISTER ="user", KEY_PASS_TEREGISTER ="pass";
     static final String KEY_USERNAME_SEDANG_LOGIN = "Username_logged_in";
     static final String KEY_STATUS_SEDANG_LOGIN = "Status_logged_in";
+    static final String KEY_BACKGROUND_COLOR = "background_color";
 
     /** Pendlakarasian Shared Preferences yang berdasarkan paramater context */
     private static SharedPreferences getSharedPreference(Context context){
@@ -70,6 +71,16 @@ public class Preferences {
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
         editor.remove(KEY_USERNAME_SEDANG_LOGIN);
         editor.remove(KEY_STATUS_SEDANG_LOGIN);
+        editor.apply();
+    }
+
+    public static String getBackgroundColor(Context context) {
+        return getSharedPreference(context).getString(KEY_BACKGROUND_COLOR,"");
+    }
+
+    public static void setBackgroundColor(Context context, String color) {
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(KEY_BACKGROUND_COLOR, color);
         editor.apply();
     }
 }

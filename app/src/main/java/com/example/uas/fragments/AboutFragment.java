@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.uas.Preferences;
 import com.example.uas.R;
@@ -21,7 +22,8 @@ import com.example.uas.activities.MainActivity;
  * A simple {@link Fragment} subclass.
  */
 public class AboutFragment extends Fragment {
-
+    Button logout;
+    TextView backgroundColor, login;
 
     public AboutFragment() {
         // Required empty public constructor
@@ -33,7 +35,12 @@ public class AboutFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about, container, false);
-        Button logout = view.findViewById(R.id.button_logout);
+        logout = view.findViewById(R.id.button_logout);
+        login = view.findViewById(R.id.tv_info_login);
+        backgroundColor = view.findViewById(R.id.tv_info_bg_color);
+
+        login.setText(Preferences.getLoggedInUser(getContext()));
+        backgroundColor.setText(Preferences.getBackgroundColor(getContext()));
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -3,10 +3,13 @@ package com.example.uas.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Constraints;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +23,7 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.example.uas.Application;
+import com.example.uas.Preferences;
 import com.example.uas.adapters.ListFragmentAdapter;
 import com.example.uas.R;
 import com.example.uas.models.Data;
@@ -60,9 +64,20 @@ public class ListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        SharedPreferences prefs = getActivity().getSharedPreferences("list", Context.MODE_PRIVATE);
-        String color = prefs.getString("list", "White");
-
+//        SharedPreferences prefs = getActivity().getSharedPreferences("list", Context.MODE_PRIVATE);
+//        String color = prefs.getString("list", "White");
+        String color = Preferences.getBackgroundColor(getContext());
+        ConstraintLayout sv = view.findViewById(R.id.constraint);
+//        ScrollView sv = view.findViewById(R.id.scrollView2);
+        if (color.equalsIgnoreCase("White")){
+            sv.setBackgroundColor(Color.WHITE);
+        } else if (color.equalsIgnoreCase("Yellow")){
+            sv.setBackgroundColor(Color.YELLOW);
+        } else if (color.equalsIgnoreCase("Green")){
+            sv.setBackgroundColor(Color.GREEN);
+        } else {
+            sv.setBackgroundColor(Color.WHITE);
+        }
         RelativeLayout placeholder = view.findViewById(R.id.rl_list);
         LayoutInflater inflate = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final RelativeLayout holder = (RelativeLayout) inflate.inflate(R.layout.recycler_list, null);
@@ -107,7 +122,7 @@ public class ListFragment extends Fragment {
         //        preferences = Application.getPreferences();
 
 //        String color = preferences.getString(LIST_KEY, null);
-        ScrollView sv = view.findViewById(R.id.scrollView2);
+
 //        if (color == "White"){
 //            sv.setBackgroundColor(Color.WHITE);
 //        } else if (color == "Yellow"){
