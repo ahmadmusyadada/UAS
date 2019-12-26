@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.uas.Application;
@@ -46,6 +47,7 @@ public class ListFragment extends Fragment {
     private ListFragmentAdapter mAdapter;
     private SharedPreferences preferences;
     public static final String LIST_KEY = "list";
+    private TextView title;
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Data");
 
@@ -64,6 +66,8 @@ public class ListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
+        title = view.findViewById(R.id.tv_title_list);
+        title.setTextSize((float) Preferences.getFontSize(getContext()) + 12);
 //        SharedPreferences prefs = getActivity().getSharedPreferences("list", Context.MODE_PRIVATE);
 //        String color = prefs.getString("list", "White");
         String color = Preferences.getBackgroundColor(getContext());

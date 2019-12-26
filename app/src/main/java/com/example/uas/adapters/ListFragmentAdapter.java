@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.uas.Preferences;
 import com.example.uas.R;
 import com.example.uas.models.Data;
 
@@ -56,6 +57,8 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
             judul = itemView.findViewById(R.id.tv_judul_list);
             deskripsi = itemView.findViewById(R.id.tv_description_list);
             gambar = itemView.findViewById(R.id.iv_gambar_list);
+            judul.setTextSize((float) Preferences.getFontSize(itemView.getContext()));
+            deskripsi.setTextSize((float) Preferences.getFontSize(itemView.getContext()));
         }
     }
 }

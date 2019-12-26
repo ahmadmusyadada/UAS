@@ -11,6 +11,7 @@ public class Preferences {
     static final String KEY_USERNAME_SEDANG_LOGIN = "Username_logged_in";
     static final String KEY_STATUS_SEDANG_LOGIN = "Status_logged_in";
     static final String KEY_BACKGROUND_COLOR = "background_color";
+    static final String KEY_FONT_SIZE = "font_size";
 
     /** Pendlakarasian Shared Preferences yang berdasarkan paramater context */
     private static SharedPreferences getSharedPreference(Context context){
@@ -75,12 +76,22 @@ public class Preferences {
     }
 
     public static String getBackgroundColor(Context context) {
-        return getSharedPreference(context).getString(KEY_BACKGROUND_COLOR,"");
+        return getSharedPreference(context).getString(KEY_BACKGROUND_COLOR,"WHITE");
     }
 
     public static void setBackgroundColor(Context context, String color) {
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
         editor.putString(KEY_BACKGROUND_COLOR, color);
+        editor.apply();
+    }
+
+    public static int getFontSize(Context context) {
+        return getSharedPreference(context).getInt(KEY_FONT_SIZE, 32);
+    }
+
+    public static void setFontSize(Context context, int size) {
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putInt(KEY_FONT_SIZE, size);
         editor.apply();
     }
 }
